@@ -94,6 +94,23 @@ public class URLUtil {
         }
         return mapRequest;
     }
+	
+		public static String AppendParams(String url,Map<String,String> params) {
+		StringBuffer sb = new StringBuffer(url);
+		if(params != null && !params.isEmpty()){
+			//如果参数不为空，就给path后面拼接参数
+			sb.append("?");
+			//遍历Map集合，添加参数
+			for (Entry<String, String> entry : params.entrySet()) {
+				sb.append(entry.getKey());
+				sb.append("=");
+				sb.append(entry.getValue());
+				sb.append("&");
+			}
+			sb = sb.deleteCharAt(sb.length()-1);//去掉最后一个添加的&符号
+		}
+		return sb.toString();
+		
 
 
 }
